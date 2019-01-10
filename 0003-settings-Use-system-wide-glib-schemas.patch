@@ -1,0 +1,46 @@
+From 6bc357537a0ec141db6c841a9df0578daa3b2fa9 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey.doherty@intel.com>
+Date: Thu, 10 Jan 2019 12:42:01 +0000
+Subject: [PATCH 3/3] settings: Use system-wide glib schemas
+
+Signed-off-by: Ikey Doherty <ikey.doherty@intel.com>
+---
+ impatience/settings.js | 22 +---------------------
+ 1 file changed, 1 insertion(+), 21 deletions(-)
+
+diff --git a/impatience/settings.js b/impatience/settings.js
+index c4f6815..2266918 100644
+--- a/impatience/settings.js
++++ b/impatience/settings.js
+@@ -5,27 +5,7 @@ const Extension = ExtensionUtils.getCurrentExtension();
+ const SCHEMA_PATH = 'org.gnome.shell.extensions.net.gfxmonk.impatience';
+ 
+ function get_local_gsettings(schema_path) {
+-	const GioSSS = Gio.SettingsSchemaSource;
+-
+-	let schemaDir = Extension.dir.get_child('schemas');
+-
+-	let schemaSource = GioSSS.get_default();
+-	if (schemaDir.query_exists(null)) {
+-		schemaSource = GioSSS.new_from_directory(
+-			schemaDir.get_path(),
+-			schemaSource,
+-			false);
+-	}
+-
+-	let schemaObj = schemaSource.lookup(schema_path, true);
+-	if (!schemaObj) {
+-		throw new Error(
+-			'Schema ' + schema_path +
+-			' could not be found for extension ' +
+-			Extension.metadata.uuid
+-		);
+-	}
+-	return new Gio.Settings({ settings_schema: schemaObj });
++	return new Gio.Settings({ schema_id: SCHEMA_PATH });
+ };
+ 
+ function Prefs() {
+-- 
+2.20.0
+
