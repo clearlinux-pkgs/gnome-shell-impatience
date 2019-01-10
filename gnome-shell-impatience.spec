@@ -4,7 +4,7 @@
 #
 Name     : gnome-shell-impatience
 Version  : 0.4.5
-Release  : 1
+Release  : 2
 URL      : https://github.com/timbertson/gnome-shell-impatience/archive/version-0.4.5.tar.gz
 Source0  : https://github.com/timbertson/gnome-shell-impatience/archive/version-0.4.5.tar.gz
 Summary  : No detailed summary available
@@ -14,6 +14,7 @@ Requires: gnome-shell-impatience-data = %{version}-%{release}
 Patch1: 0001-Provide-a-meaningful-Makefile.patch
 Patch2: 0002-metadata-Explicitly-enable-support-for-GNOME-3.30.patch
 Patch3: 0003-settings-Use-system-wide-glib-schemas.patch
+Patch4: no-double-log.patch
 
 %description
 <img src="http://gfxmonk.net/dist/status/project/gnome-shell-impatience.png">
@@ -32,18 +33,19 @@ data components for the gnome-shell-impatience package.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1547124359
+export SOURCE_DATE_EPOCH=1547125858
 make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1547124359
+export SOURCE_DATE_EPOCH=1547125858
 rm -rf %{buildroot}
 %make_install
 

@@ -1,0 +1,21 @@
+From 33eb56882c4871d7fe0c1a003b8417681d424286 Mon Sep 17 00:00:00 2001
+From: Tim Cuthbertson <tim@gfxmonk.net>
+Date: Thu, 20 Sep 2018 20:49:20 +1000
+Subject: [PATCH] remove double-logging
+
+---
+ impatience/extension.js | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/impatience/extension.js b/impatience/extension.js
+index 2dde979..33b6e62 100644
+--- a/impatience/extension.js
++++ b/impatience/extension.js
+@@ -8,7 +8,6 @@ const Settings = Extension.imports.settings;
+ 
+ function LOG(m){
+ 	global.log("[impatience] " + m);
+-	log("[impatience] " + m);
+ };
+ function Ext() {
+ 	this._init.apply(this, arguments);
