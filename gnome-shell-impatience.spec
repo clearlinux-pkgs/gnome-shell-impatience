@@ -4,7 +4,7 @@
 #
 Name     : gnome-shell-impatience
 Version  : 43e4e0a1e0eeb334a2da5224ce3ab4fdddf4f1b2
-Release  : 4
+Release  : 5
 URL      : https://github.com/timbertson/gnome-shell-impatience/archive/43e4e0a1e0eeb334a2da5224ce3ab4fdddf4f1b2.tar.gz
 Source0  : https://github.com/timbertson/gnome-shell-impatience/archive/43e4e0a1e0eeb334a2da5224ce3ab4fdddf4f1b2.tar.gz
 Summary  : No detailed summary available
@@ -28,6 +28,7 @@ data components for the gnome-shell-impatience package.
 
 %prep
 %setup -q -n gnome-shell-impatience-43e4e0a1e0eeb334a2da5224ce3ab4fdddf4f1b2
+cd %{_builddir}/gnome-shell-impatience-43e4e0a1e0eeb334a2da5224ce3ab4fdddf4f1b2
 %patch1 -p1
 %patch2 -p1
 
@@ -36,20 +37,20 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569368240
+export SOURCE_DATE_EPOCH=1586230796
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1569368240
+export SOURCE_DATE_EPOCH=1586230796
 rm -rf %{buildroot}
 %make_install
 
